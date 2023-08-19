@@ -15,18 +15,12 @@
                                 <div class="col-12 p-1">
                                     <label class="form-label">Title*</label>
                                     <input type="text" class="form-control" id="updateTitle">
-                                    
+                                    <input type="text" class="form-control" id="TodoId">
                                 </div>
                                 <div class="col-12 p-1">
                                     <label class="form-label">Description *</label>
                                     <input type="text" class="form-control" id="updateDescription">
-                                </div>                      
-
-                               
-
-                             
-                                <input type="text" class="form-control" id="TodoId">
-                              
+                                </div>      
 
                             </div>
                         </div>
@@ -57,28 +51,25 @@
 
            let  updateTitle= document.getElementById('updateTitle').value
            let  updateDescription= document.getElementById('updateDescription').value
-           let  TodoId= document.getElementById('TodoId').value
+           let id= document.getElementById('TodoId').value
            if(updateTitle.length===0){
             errorToast('Title Required')
         }else{
-
+            $('#update-modal').modal('hide')
            let res=await axios.post('/update-todo',{
                 title:updateTitle,
                 description:updateDescription,
-                id:TodoID
+                id:id
            })
 
            if(res.status===200 && res.data===1){
                 successToast("Update Success")
-                $('#update-modal').trigger("reset") //form reset korar jnno use kora hoice trigger holo jquery cls
-                    await  todoList()
+                $('#update-modal').trigger("reset")
+                    await todoList()
             }else{
                 errorToast("Failed Request")
             }
         }
-        }
-
-
-     
+        }     
 
 </script> 

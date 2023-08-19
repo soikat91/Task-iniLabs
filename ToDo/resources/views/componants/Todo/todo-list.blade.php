@@ -52,7 +52,7 @@
                         $('.edit').on('click', async function (){
 
                             let id=$(this).data('id')
-                            alert(id)
+                           // alert(id)
                             await TodoID(id)
                             $('#update-modal').modal('show')
                             
@@ -63,7 +63,7 @@
                         $('.delete').on('click',function(){
 
                             let id=$(this).data('id')
-                            alert(id)
+                           // alert(id)
                             $('#delete-modal').modal('show')
                             $('#todoId').val(id)
                         })
